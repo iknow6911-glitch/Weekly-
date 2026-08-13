@@ -1,0 +1,6 @@
+{
+  "name": "Weekly Budget & Pay Tracker",
+  "description": "Track weekly net pay, breakdown monthly expenses into weekly payments, deduct variable savings and debt, and log categorized transactions to accurately calculate remaining disposable income.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
