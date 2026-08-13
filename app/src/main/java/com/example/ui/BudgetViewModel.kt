@@ -236,6 +236,8 @@ class BudgetViewModel(application: Application) : AndroidViewModel(application) 
                     category = category
                 )
             )
+            val current = settings.value
+            repository.saveSettings(current.copy(checkingBalance = current.checkingBalance - amount))
         }
     }
 
@@ -253,6 +255,9 @@ class BudgetViewModel(application: Application) : AndroidViewModel(application) 
                     timestamp = timestamp
                 )
             )
+            
+            val current = settings.value
+            repository.saveSettings(current.copy(checkingBalance = current.checkingBalance - amount))
 
             // Update respective page
             when (targetType) {
@@ -289,6 +294,8 @@ class BudgetViewModel(application: Application) : AndroidViewModel(application) 
     fun deleteTransaction(transaction: TransactionItem) {
         viewModelScope.launch {
             repository.deleteTransaction(transaction)
+            val current = settings.value
+            repository.saveSettings(current.copy(checkingBalance = current.checkingBalance + transaction.amount))
         }
     }
 
